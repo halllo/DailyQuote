@@ -19,7 +19,7 @@ namespace DailyQuoteLogic
 			{
 				try
 				{
-					var text = quote.Text;
+					var text = string.Format("\"{0}\"", quote.Text);
 
 					var mediumFrontJpg = TileImage.Create("mediumFront.jpg", text, null, RandomColor(), 45, true, new Size(336, 336));
 					var mediumBackJpg = TileImage.Create("mediumBack.jpg", text, null, RandomColor(), 45, true, new Size(336, 336));
@@ -50,6 +50,7 @@ namespace DailyQuoteLogic
 			return completionSource.Task;
 		}
 
+
 		public static SolidColorBrush RandomColor()
 		{
 			var colors = new[] {
@@ -78,6 +79,7 @@ namespace DailyQuoteLogic
 			int random = new Random().Next(colors.Length);
 			return new SolidColorBrush(colors[random]);
 		}
+
 
 		public static async Task<string> GetQuoteFromWebsite()
 		{

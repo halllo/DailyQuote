@@ -43,16 +43,11 @@
 		<StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
 			<TextBlock Text="daily quote" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
 			<TextBlock Text="today" x:Name="headerDate" Style="{StaticResource PhoneTextExtraLargeStyle}" Margin="12,0"/>
+			<ProgressBar IsIndeterminate="True" x:Name="loadingProgressBar" Visibility="Visible"/>
 		</StackPanel>
 
 		<!--ContentPanel - place additional content here-->
 		<Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-			<TextBlock x:Name="pintToStartHint" 
-					   Text="pin to start and wait for quotes" 
-					   FontSize="30"
-					   Style="{StaticResource PhoneTextAccentStyle}" 
-					   Visibility="Collapsed"
-					   />
 			<StackPanel>
 				<TextBox x:Name="quoteTextBlock" 
 						 BorderBrush="Transparent"
@@ -70,8 +65,11 @@
 
 	<phone:PhoneApplicationPage.ApplicationBar>
 		<shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+			<shell:ApplicationBarIconButton IconUri="/Images/share.png" Text="share" Click="Share"/>
+			<shell:ApplicationBarIconButton IconUri="/Images/feature.email.png" Text="send" Click="Send"/>
 			<shell:ApplicationBar.MenuItems>
-				<shell:ApplicationBarMenuItem Text="visit brainyquote.com" Click="ApplicationBarMenuItem_Click"/>
+				<shell:ApplicationBarMenuItem Text="visit brainyquote.com" Click="BrowseToBrainyQuote"/>
+				<shell:ApplicationBarMenuItem Text="info" Click="GoToInfo"/>
 			</shell:ApplicationBar.MenuItems>
 		</shell:ApplicationBar>
 	</phone:PhoneApplicationPage.ApplicationBar>

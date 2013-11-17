@@ -14,13 +14,13 @@ namespace DailyQuoteLogic
 		internal Quote(string html)
 		{
 			var matches = Regex.Matches(html, @"(?<=\>).*?(?=<)", RegexOptions.Multiline);
-			Text = string.Format("\"{0}\"", matches[0].Value);
+			Text = string.Format("{0}", matches[0].Value);
 			Author = matches[1].Value;
 		}
 
 		public override string ToString()
 		{
-			return string.Format("{0}\r\n- {1}", Text, Author);
+			return string.Format("\"{0}\" ~ {1}", Text, Author);
 		}
 	}
 }
