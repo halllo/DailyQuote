@@ -1,7 +1,7 @@
 DailyQuote
 ==========
 Provides a daily quote on a live tile on Windows Phone 8. A Windows 8 client might be coming soon.
-[![Build Status](https://travis-ci.org/halllo/DailyDilbert.png)](https://travis-ci.org/halllo/DailyDilbert)
+[![Build Status](https://travis-ci.org/halllo/DailyQuote.png)](https://travis-ci.org/halllo/DailyQuote)
 
 ![Daily Quote](https://raw.github.com/halllo/DailyQuote/master/frontend_wp8/DailyQuote/Assets/Icon.png)
 Elevator Pitch
