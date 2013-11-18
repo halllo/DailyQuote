@@ -25,7 +25,7 @@ namespace DailyQuote
 			}
 			catch (Exception)
 			{
-				MessageBox.Show("Could download quote. Pin to start and wait for quotes.");
+				MessageBox.Show("Could not download quote. Pin to start and wait for quotes.");
 			}
 			finally
 			{
