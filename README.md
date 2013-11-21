@@ -1,6 +1,7 @@
 DailyQuote [![Build Status AppVeyor](https://ci.appveyor.com/api/projects/status?id=mg6i46f70vncbr9n)](https://ci.appveyor.com/project/dailyquote)
 ==========
 Provides a daily quote on a live tile on Windows Phone 8. A Windows 8 client might be coming soon.
+[![Build Status Travis-CI](https://travis-ci.org/halllo/DailyQuote.png)](https://travis-ci.org/halllo/DailyQuote)
 
 ![Daily Quote](https://raw.github.com/halllo/DailyQuote/master/frontend_wp8/DailyQuote/Assets/Icon.png)
 Elevator Pitch
