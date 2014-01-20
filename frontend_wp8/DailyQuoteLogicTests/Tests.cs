@@ -19,11 +19,12 @@ namespace DailyQuoteLogicTests
 		public void Parse_Html_TextAndAuhtor()
 		{
 			var quote = new DailyQuoteLogic.Quote(
-@"<div class=""bqQuoteLink"">The return we reap from generous actions is not always evident.</div>
-<a href=""/quotes/quotes/f/francescog101492.html"">Francesco Guicciardini</a>");
+@"class=""bqQuoteLink""><a title=""view quote"" href=""/quotes/quotes/m/martinluth101309.html"">We must learn to live together as brothers or perish together as fools.</a></span><br>
+<span class=""bodybold""><a title=""view author"" href=""/quotes/authors/m/martin_luther_king_jr.html"">Martin Luther King, Jr.</a></span>
+</div>");
 
-			Assert.AreEqual("The return we reap from generous actions is not always evident.", quote.Text);
-			Assert.AreEqual("Francesco Guicciardini", quote.Author);
+			Assert.AreEqual("We must learn to live together as brothers or perish together as fools.", quote.Text);
+			Assert.AreEqual("Martin Luther King, Jr.", quote.Author);
 		}
 	}
 }

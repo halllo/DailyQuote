@@ -85,7 +85,7 @@ namespace DailyQuoteLogic
 		{
 			var httpClient = new HttpClient();
 			var brainyQuoteHtml = await httpClient.GetStringAsync("http://www.brainyquote.com/quotes_of_the_day.html?" + DateTime.Now.Ticks);
-			var quotesHtml = Regex.Matches(brainyQuoteHtml, "<div class=\"bqQuoteLink\">.*?</a>", RegexOptions.Singleline);
+			var quotesHtml = Regex.Matches(brainyQuoteHtml, "class=\"bqQuoteLink\">.*?</div>", RegexOptions.Singleline);
 			var quoteHtml = quotesHtml[0];
 			return quoteHtml.Value;
 		}
