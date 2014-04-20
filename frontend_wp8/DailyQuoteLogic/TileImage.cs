@@ -55,7 +55,7 @@ namespace DailyQuoteLogic
 				if (titleClear) bitmap.Render(titleShadow, new TranslateTransform() { X = 0, Y = tileSize.Height - titleShadow.Height });
 				var stream = store.CreateFile(tileImage);
 				bitmap.Invalidate();
-				bitmap.SaveJpeg(stream, (int)tileSize.Width, (int)tileSize.Height, 0, 100);
+				bitmap.SaveJpeg(stream, (int)tileSize.Width, (int)tileSize.Height, 0, 90);
 				stream.Close();
 			}
 			return new Uri("isostore:" + tileImage, UriKind.Absolute);

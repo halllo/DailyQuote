@@ -33,7 +33,7 @@
 
 		<!--TitlePanel contains the name of the application and page title-->
 		<StackPanel Grid.Row="0" Margin="12,17,0,28">
-			<TextBlock Text="Daily Quote 1.1" Style="{StaticResource PhoneTextNormalStyle}"/>
+			<TextBlock Text="Daily Quote 1.2" Style="{StaticResource PhoneTextNormalStyle}"/>
 			<TextBlock Text="information" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
 		</StackPanel>
 
@@ -62,7 +62,7 @@
 				<srui:ColdMoreAppsButton Publisher="halllo" Content="more apps by halllo" Margin="10 0 10 50"/>
 				<TextBlock Text="implemented by Manuel Naujoks" TextWrapping="Wrap" Style="{StaticResource PhoneTextNormalStyle}" />
 				<StackPanel Orientation="Horizontal">
-					<TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Style="{StaticResource PhoneTextSubtleStyle}" Text="© 2013" />
+					<TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Style="{StaticResource PhoneTextSubtleStyle}" Text="© 2014" />
 					<srui:ColdWebLink Url="www.mnsdc.de" VerticalAlignment="Center"/>
 				</StackPanel>
 			</StackPanel>

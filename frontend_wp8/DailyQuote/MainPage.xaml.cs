@@ -48,7 +48,7 @@ namespace DailyQuote
 				quote = await DailyQuoteLogic.Get.Quote();
 				DailyQuoteLogic.Caching.Cache(quote);
 				DailyQuoteLogic.Caching.RememberTodayAsQuoteDay();
-				var success = await DailyQuoteLogic.PhoneIntegration.UpdateTile(quote);
+				var success = await DailyQuoteLogic.PhoneIntegration.UpdateTileAndLockscreen(quote);
 			}
 
 			quoteTextBlock.Text = quote.ToString();
@@ -74,6 +74,24 @@ namespace DailyQuote
 		void GoToInfo(object sender, EventArgs e)
 		{
 			App.RootFrame.Navigate(new Uri("/Info.xaml", UriKind.Relative));
+		}
+
+		private async void Refresh(object sender, EventArgs e)
+		{
+			try
+			{
+				loadingProgressBar.Visibility = System.Windows.Visibility.Visible;
+				DailyQuoteLogic.Caching.Cache(null);
+				await ShowQuote();
+			}
+			catch (Exception)
+			{
+				MessageBox.Show("Could not download quote. Pin to start and wait for quotes.");
+			}
+			finally
+			{
+				loadingProgressBar.Visibility = System.Windows.Visibility.Collapsed;
+			}
 		}
 	}
 }

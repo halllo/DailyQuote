@@ -10,38 +10,15 @@ namespace DailyQuoteLogic
 {
 	public static class PhoneIntegration
 	{
-		public static Task<bool> UpdateTile(Quote quote)
+		public static Task<bool> UpdateTileAndLockscreen(Quote quote)
 		{
 			TaskCompletionSource<bool> completionSource = new TaskCompletionSource<bool>();
 			Deployment.Current.Dispatcher.BeginInvoke(new Action(() =>
 			{
 				try
 				{
-					var text = string.Format("\"{0}\"", quote.Text);
-
-					var mediumFrontJpg = TileImage.Create("mediumFront.jpg", text, null, RandomColor(), 45, true, new Size(336, 336));
-					var mediumBackJpg = TileImage.Create("mediumBack.jpg", text, null, RandomColor(), 45, true, new Size(336, 336));
-					var wideFrontJpg = TileImage.Create("wideFront.jpg", text, null, RandomColor(), 45, true, new Size(691, 336));
-					var wideBackJpg = TileImage.Create("wideBack.jpg", text, null, RandomColor(), 45, true, new Size(691, 336));
-
-					ShellTile.ActiveTiles.First().Update(new FlipTileData()
-					{
-						Title = quote.Author,
-						BackTitle = quote.Author,
-
-						BackgroundImage = mediumFrontJpg,
-						BackBackgroundImage = mediumBackJpg,
-
-						WideBackgroundImage = wideFrontJpg,
-						WideBackBackgroundImage = wideBackJpg
-					});
-
-					if (LockScreenManager.IsProvidedByCurrentApplication)
-					{
-						var dayToggle = DateTime.Today.Subtract(new DateTime()).Days % 2;
-						var lockScreenJpg = LockScreenImage.Create("lockScreen" + dayToggle + ".jpg", text + "\n\n" + quote.Author, RandomColor(), 45, new Size(768, 1280));
-						LockScreen.SetImageUri(lockScreenJpg);
-					}
+					UpdateTile(quote);
+					UpdateLockscreen(quote);
 
 					completionSource.SetResult(true);
 				}
@@ -55,21 +32,61 @@ namespace DailyQuoteLogic
 			return completionSource.Task;
 		}
 
+		private static void UpdateTile(Quote quote)
+		{
+			var text = string.Format("\"{0}\"", quote.Text);
+
+			var mediumFrontJpg = TileImage.Create("mediumFront.jpg", text, null, RandomColor(), 45, true, new Size(336, 336));
+			var mediumBackJpg = TileImage.Create("mediumBack.jpg", text, null, RandomColor(), 45, true, new Size(336, 336));
+			var wideFrontJpg = TileImage.Create("wideFront.jpg", text, null, RandomColor(), 45, true, new Size(691, 336));
+			var wideBackJpg = TileImage.Create("wideBack.jpg", text, null, RandomColor(), 45, true, new Size(691, 336));
+
+			ShellTile.ActiveTiles.First().Update(new FlipTileData()
+			{
+				Title = quote.Author,
+				BackTitle = quote.Author,
+
+				BackgroundImage = mediumFrontJpg,
+				BackBackgroundImage = mediumBackJpg,
+
+				WideBackgroundImage = wideFrontJpg,
+				WideBackBackgroundImage = wideBackJpg
+			});
+		}
+
+		private static void UpdateLockscreen(Quote quote)
+		{
+			if (LockScreenManager.IsProvidedByCurrentApplication)
+			{
+				var dayToggle = DateTime.Today.Subtract(new DateTime()).Days % 2;
+				var lockScreenJpg = LockScreenImage.Create(
+					"lockScreen" + dayToggle + ".jpg",
+					string.Format("\"{0}\"\n\n{1}", quote.Text, quote.Author),
+					RandomColor(), 45, new Size(768, 1280));
+
+				LockScreen.SetImageUri(lockScreenJpg);
+			}
+		}
+
 		public static SolidColorBrush RandomColor()
 		{
 			var colors = new[] {
 					//Color.FromArgb(255, 168,196,0),
+					Color.FromArgb(255, 0,255,0),
 					Color.FromArgb(255, 96,169,23),
 					Color.FromArgb(255, 0,138,0),
 					Color.FromArgb(255, 0,171,169),
 					Color.FromArgb(255, 27,161,226),
 					Color.FromArgb(255, 0,80,239),
 					Color.FromArgb(255, 106,0,255),
+					Color.FromArgb(255, 0,0,255),
 					Color.FromArgb(255, 170,0,255),
 					//Color.FromArgb(255, 244,141,208),
+					Color.FromArgb(255, 255,0,128),
 					Color.FromArgb(255, 216,0,115),
 					Color.FromArgb(255, 162,0,37),
 					Color.FromArgb(255, 229,20,0),
+					Color.FromArgb(255, 255,0,0),
 					Color.FromArgb(255, 250,104,0),
 					//Color.FromArgb(255, 240,163,10),
 					//Color.FromArgb(255, 227,200,0),

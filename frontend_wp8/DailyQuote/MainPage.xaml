@@ -68,6 +68,7 @@
 			<shell:ApplicationBarIconButton IconUri="/Images/share.png" Text="share" Click="Share"/>
 			<shell:ApplicationBarIconButton IconUri="/Images/feature.email.png" Text="send" Click="Send"/>
 			<shell:ApplicationBar.MenuItems>
+				<shell:ApplicationBarMenuItem Text="refresh" Click="Refresh"/>
 				<shell:ApplicationBarMenuItem Text="visit brainyquote.com" Click="BrowseToBrainyQuote"/>
 				<shell:ApplicationBarMenuItem Text="info" Click="GoToInfo"/>
 			</shell:ApplicationBar.MenuItems>

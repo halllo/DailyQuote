@@ -31,7 +31,7 @@ namespace DailyQuoteBackgroundAgent
 					var dailyQuote = t.Result;
 					DailyQuoteLogic.Caching.Cache(dailyQuote);
 					DailyQuoteLogic.Caching.RememberTodayAsQuoteDay();
-					DailyQuoteLogic.PhoneIntegration.UpdateTile(dailyQuote).ContinueWith(success =>
+					DailyQuoteLogic.PhoneIntegration.UpdateTileAndLockscreen(dailyQuote).ContinueWith(success =>
 					{
 						NotifyComplete();
 					});
