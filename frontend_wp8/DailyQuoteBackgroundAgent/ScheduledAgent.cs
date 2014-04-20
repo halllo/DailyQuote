@@ -24,15 +24,19 @@ namespace DailyQuoteBackgroundAgent
 
 		protected override void OnInvoke(ScheduledTask task)
 		{
-			DailyQuoteLogic.DailyQuoteLogic.GetQuote().ContinueWith(t =>
+			if (DailyQuoteLogic.Caching.IsQuoteOfToday() == false)
 			{
-				var dailyQuote = t.Result;
-				DailyQuoteLogic.DailyQuoteLogic.Cache(dailyQuote);
-				DailyQuoteLogic.DailyQuoteLogic.UpdateTile(dailyQuote).ContinueWith(success =>
+				DailyQuoteLogic.Get.Quote().ContinueWith(t =>
 				{
-					NotifyComplete();
+					var dailyQuote = t.Result;
+					DailyQuoteLogic.Caching.Cache(dailyQuote);
+					DailyQuoteLogic.Caching.RememberTodayAsQuoteDay();
+					DailyQuoteLogic.PhoneIntegration.UpdateTile(dailyQuote).ContinueWith(success =>
+					{
+						NotifyComplete();
+					});
 				});
-			});
+			}
 		}
 	}
 }

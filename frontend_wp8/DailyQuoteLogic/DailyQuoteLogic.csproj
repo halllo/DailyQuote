@@ -85,8 +85,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DailyQuoteLogic.cs" />
+    <Compile Include="Caching.cs" />
+    <Compile Include="Get.cs" />
     <Compile Include="IsolatedStorageFS.cs" />
+    <Compile Include="PhoneIntegration.cs" />
     <Compile Include="TileImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quote.cs" />

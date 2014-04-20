@@ -8,7 +8,7 @@ namespace DailyQuoteLogicTests
 		[TestMethod]
 		public void GetQuote_ReturnsQuoteHtml()
 		{
-			var quoteFuture = DailyQuoteLogic.DailyQuoteLogic.GetQuoteFromWebsite();
+			var quoteFuture = DailyQuoteLogic.Get.QuoteFromWebsite();
 			quoteFuture.Wait();
 			var quote = quoteFuture.Result;
 			Assert.IsTrue(string.IsNullOrEmpty(quote) == false);

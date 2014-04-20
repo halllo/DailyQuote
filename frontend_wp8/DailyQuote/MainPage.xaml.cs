@@ -35,17 +35,18 @@ namespace DailyQuote
 
 		async Task ShowQuote()
 		{
-			var quote = DailyQuoteLogic.DailyQuoteLogic.GetCachedDailyQuote();
+			var quote = DailyQuoteLogic.Caching.GetCachedDailyQuote();
 
 			if (quote == null)
 			{
-				quote = await DailyQuoteLogic.DailyQuoteLogic.GetQuote();
-				DailyQuoteLogic.DailyQuoteLogic.Cache(quote);
-				var success = await DailyQuoteLogic.DailyQuoteLogic.UpdateTile(quote);
+				quote = await DailyQuoteLogic.Get.Quote();
+				DailyQuoteLogic.Caching.Cache(quote);
+				DailyQuoteLogic.Caching.RememberTodayAsQuoteDay();
+				var success = await DailyQuoteLogic.PhoneIntegration.UpdateTile(quote);
 			}
 
 			quoteTextBlock.Text = quote.ToString();
-			quoteTextBlock.Background = DailyQuoteLogic.DailyQuoteLogic.RandomColor();
+			quoteTextBlock.Background = DailyQuoteLogic.PhoneIntegration.RandomColor();
 			quoteTextBlock.Visibility = System.Windows.Visibility.Visible;
 		}
 
