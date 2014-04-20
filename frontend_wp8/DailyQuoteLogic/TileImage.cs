@@ -44,9 +44,7 @@ namespace DailyQuoteLogic
 			titleShadow.Opacity = 0.7;
 			titleShadow.Fill = backgroundColor;
 
-			var tileImage = string.Format("/Shared/ShellContent/{0}", filename);
-			var isoStoreTileImage = string.Format("isostore:{0}", tileImage);
-
+			var tileImage = "/Shared/ShellContent/" + filename;
 			using (IsolatedStorageFile store = IsolatedStorageFile.GetUserStoreForApplication())
 			{
 				var bitmap = new WriteableBitmap((int)tileSize.Width, (int)tileSize.Height);
@@ -60,7 +58,7 @@ namespace DailyQuoteLogic
 				bitmap.SaveJpeg(stream, (int)tileSize.Width, (int)tileSize.Height, 0, 100);
 				stream.Close();
 			}
-			return new Uri(isoStoreTileImage, UriKind.Absolute);
+			return new Uri("isostore:" + tileImage, UriKind.Absolute);
 		}
 	}
 }

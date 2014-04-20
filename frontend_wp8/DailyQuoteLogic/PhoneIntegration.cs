@@ -1,12 +1,10 @@
 using Microsoft.Phone.Shell;
 using System;
-using System.IO.IsolatedStorage;
 using System.Linq;
-using System.Net.Http;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using Windows.Phone.System.UserProfile;
 
 namespace DailyQuoteLogic
 {
@@ -38,6 +36,13 @@ namespace DailyQuoteLogic
 						WideBackBackgroundImage = wideBackJpg
 					});
 
+					if (LockScreenManager.IsProvidedByCurrentApplication)
+					{
+						var dayToggle = DateTime.Today.Subtract(new DateTime()).Days % 2;
+						var lockScreenJpg = LockScreenImage.Create("lockScreen" + dayToggle + ".jpg", text + "\n\n" + quote.Author, RandomColor(), 45, new Size(768, 1280));
+						LockScreen.SetImageUri(lockScreenJpg);
+					}
+
 					completionSource.SetResult(true);
 				}
 				catch (Exception e)
@@ -53,7 +58,7 @@ namespace DailyQuoteLogic
 		public static SolidColorBrush RandomColor()
 		{
 			var colors = new[] {
-					Color.FromArgb(255, 168,196,0),
+					//Color.FromArgb(255, 168,196,0),
 					Color.FromArgb(255, 96,169,23),
 					Color.FromArgb(255, 0,138,0),
 					Color.FromArgb(255, 0,171,169),
@@ -61,18 +66,18 @@ namespace DailyQuoteLogic
 					Color.FromArgb(255, 0,80,239),
 					Color.FromArgb(255, 106,0,255),
 					Color.FromArgb(255, 170,0,255),
-					Color.FromArgb(255, 244,141,208),
+					//Color.FromArgb(255, 244,141,208),
 					Color.FromArgb(255, 216,0,115),
 					Color.FromArgb(255, 162,0,37),
 					Color.FromArgb(255, 229,20,0),
 					Color.FromArgb(255, 250,104,0),
-					Color.FromArgb(255, 240,163,10),
-					Color.FromArgb(255, 227,200,0),
-					Color.FromArgb(255, 130,90,44),
-					Color.FromArgb(255, 109,135,100),
-					Color.FromArgb(255, 100,118,135),
-					Color.FromArgb(255, 118,96,138),
-					Color.FromArgb(255, 160,82,45),
+					//Color.FromArgb(255, 240,163,10),
+					//Color.FromArgb(255, 227,200,0),
+					//Color.FromArgb(255, 130,90,44),
+					//Color.FromArgb(255, 109,135,100),
+					//Color.FromArgb(255, 100,118,135),
+					//Color.FromArgb(255, 118,96,138),
+					//Color.FromArgb(255, 160,82,45),
 				};
 
 			int random = new Random().Next(colors.Length);

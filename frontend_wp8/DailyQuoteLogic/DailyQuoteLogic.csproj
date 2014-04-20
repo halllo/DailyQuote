@@ -88,6 +88,7 @@
     <Compile Include="Caching.cs" />
     <Compile Include="Get.cs" />
     <Compile Include="IsolatedStorageFS.cs" />
+    <Compile Include="LockScreenImage.cs" />
     <Compile Include="PhoneIntegration.cs" />
     <Compile Include="TileImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

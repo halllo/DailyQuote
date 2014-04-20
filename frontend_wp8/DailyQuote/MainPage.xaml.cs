@@ -3,6 +3,7 @@ using Microsoft.Phone.Tasks;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using Windows.Phone.System.UserProfile;
 
 namespace DailyQuote
 {
@@ -17,6 +18,11 @@ namespace DailyQuote
 
 		async void MainPage_Loaded(object sender, RoutedEventArgs e)
 		{
+			if (!LockScreenManager.IsProvidedByCurrentApplication)
+			{
+				await LockScreenManager.RequestAccessAsync();
+			}
+
 			new UpdateBackgroundAgent().StartPeriodicAgent();
 
 			try
