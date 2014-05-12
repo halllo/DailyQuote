@@ -24,13 +24,13 @@ namespace DailyQuoteBackgroundAgent
 
 		protected override void OnInvoke(ScheduledTask task)
 		{
-			if (DailyQuoteLogic.Caching.IsQuoteOfToday() == false)
+			if (DailyQuoteLogic.Caching.IsQuoteCurrent() == false)
 			{
 				DailyQuoteLogic.Get.Quote().ContinueWith(t =>
 				{
 					var dailyQuote = t.Result;
 					DailyQuoteLogic.Caching.Cache(dailyQuote);
-					DailyQuoteLogic.Caching.RememberTodayAsQuoteDay();
+					DailyQuoteLogic.Caching.RememberQuoteAsCurrent();
 					DailyQuoteLogic.PhoneIntegration.UpdateTileAndLockscreen(dailyQuote).ContinueWith(success =>
 					{
 						NotifyComplete();

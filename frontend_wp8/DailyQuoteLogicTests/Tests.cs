@@ -1,10 +1,33 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace DailyQuoteLogicTests
 {
 	[TestClass]
 	public class Tests
 	{
+		[TestMethod]
+		public void IsInValidCacheTime_1hStillCurrent()
+		{
+			Assert.IsTrue(DailyQuoteLogic.Caching.IsCacheTimeDeemedCurrent(
+				cacheTime: new DateTime(2000, 1, 1, 1, 0, 0),
+				now: new DateTime(2000, 1, 1, 2, 0, 0)));
+		}
+		[TestMethod]
+		public void IsInValidCacheTime_12hStillCurrent()
+		{
+			Assert.IsTrue(DailyQuoteLogic.Caching.IsCacheTimeDeemedCurrent(
+				cacheTime: new DateTime(2000, 1, 1, 1, 0, 0),
+				now: new DateTime(2000, 1, 1, 13, 0, 0)));
+		}
+		[TestMethod]
+		public void IsInValidCacheTime_13hOutOfDate()
+		{
+			Assert.IsFalse(DailyQuoteLogic.Caching.IsCacheTimeDeemedCurrent(
+				cacheTime: new DateTime(2000, 1, 1, 1, 0, 0),
+				now: new DateTime(2000, 1, 1, 14, 0, 0)));
+		}
+
 		[TestMethod]
 		public void GetQuote_ReturnsQuoteHtml()
 		{
@@ -13,7 +36,6 @@ namespace DailyQuoteLogicTests
 			var quote = quoteFuture.Result;
 			Assert.IsTrue(string.IsNullOrEmpty(quote) == false);
 		}
-
 
 		[TestMethod]
 		public void Parse_Html_TextAndAuhtor()

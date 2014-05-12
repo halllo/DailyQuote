@@ -58,9 +58,10 @@ namespace DailyQuoteLogic
 		{
 			if (LockScreenManager.IsProvidedByCurrentApplication)
 			{
-				var dayToggle = DateTime.Today.Subtract(new DateTime()).Days % 2;
 				var lockScreenJpg = LockScreenImage.Create(
-					"lockScreen" + dayToggle + ".jpg",
+					GetCurrentLockScreenUri().EndsWith("1.jpg")
+						? "lockScreen2.jpg"
+						: "lockScreen1.jpg",
 					string.Format("\"{0}\"\n\n{1}", quote.Text, quote.Author),
 					RandomColor(), 45, new Size(768, 1280));
 
@@ -68,11 +69,23 @@ namespace DailyQuoteLogic
 			}
 		}
 
+		private static string GetCurrentLockScreenUri()
+		{
+			try
+			{
+				return LockScreen.GetImageUri().ToString();
+			}
+			catch (Exception)
+			{
+				return string.Empty;
+			}
+		}
+
 		public static SolidColorBrush RandomColor()
 		{
 			var colors = new[] {
 					//Color.FromArgb(255, 168,196,0),
-					Color.FromArgb(255, 0,255,0),
+					//Color.FromArgb(255, 0,255,0),
 					Color.FromArgb(255, 96,169,23),
 					Color.FromArgb(255, 0,138,0),
 					Color.FromArgb(255, 0,171,169),

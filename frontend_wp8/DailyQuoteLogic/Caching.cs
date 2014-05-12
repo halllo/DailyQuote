@@ -5,21 +5,26 @@ namespace DailyQuoteLogic
 {
 	public static class Caching
 	{
-		private const string IS_DailyQuoteDay_Key = "dailyQuoteDay";
-		public static bool IsQuoteOfToday()
+		private const string IS_DailyQuoteCacheTime_Key = "dailyQuoteCacheTime";
+		public static bool IsQuoteCurrent()
 		{
 			var settings = IsolatedStorageSettings.ApplicationSettings;
-			var dailyQuoteDay = settings.Contains(IS_DailyQuoteDay_Key) ? (int)settings[IS_DailyQuoteDay_Key] : 0;
-			return dailyQuoteDay == DateTime.Today.Day;
+			var dailyQuoteCacheTime = settings.Contains(IS_DailyQuoteCacheTime_Key) ? (DateTime)settings[IS_DailyQuoteCacheTime_Key] : new DateTime();
+			return IsCacheTimeDeemedCurrent(dailyQuoteCacheTime, DateTime.Now);
 		}
 
-		public static void RememberTodayAsQuoteDay()
+		public static void RememberQuoteAsCurrent()
 		{
 			var settings = IsolatedStorageSettings.ApplicationSettings;
-			if (!settings.Contains(IS_DailyQuoteDay_Key))
-				settings.Add(IS_DailyQuoteDay_Key, 0);
-			settings[IS_DailyQuoteDay_Key] = DateTime.Today.Day;
+			if (!settings.Contains(IS_DailyQuoteCacheTime_Key))
+				settings.Add(IS_DailyQuoteCacheTime_Key, new DateTime());
+			settings[IS_DailyQuoteCacheTime_Key] = DateTime.Now;
 			settings.Save();
+		}
+
+		internal static bool IsCacheTimeDeemedCurrent(DateTime cacheTime, DateTime now)
+		{
+			return cacheTime.AddHours(12) >= now;
 		}
 
 

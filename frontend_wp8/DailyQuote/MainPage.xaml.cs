@@ -47,7 +47,7 @@ namespace DailyQuote
 			{
 				quote = await DailyQuoteLogic.Get.Quote();
 				DailyQuoteLogic.Caching.Cache(quote);
-				DailyQuoteLogic.Caching.RememberTodayAsQuoteDay();
+				DailyQuoteLogic.Caching.RememberQuoteAsCurrent();
 				var success = await DailyQuoteLogic.PhoneIntegration.UpdateTileAndLockscreen(quote);
 			}
 

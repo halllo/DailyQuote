@@ -34,7 +34,7 @@ namespace DailyQuoteLogic
 				bitmap.Render(textBlock, new TranslateTransform() { X = 39, Y = 88 });
 				var stream = store.CreateFile(tileImage);
 				bitmap.Invalidate();
-				bitmap.SaveJpeg(stream, (int)size.Width, (int)size.Height, 0, 90);
+				bitmap.SaveJpeg(stream, (int)size.Width, (int)size.Height, 0, 99);
 				stream.Close();
 			}
 			return new Uri("ms-appdata:///local" + tileImage, UriKind.Absolute);
