@@ -90,6 +90,7 @@
     <Compile Include="IsolatedStorageFS.cs" />
     <Compile Include="LockScreenImage.cs" />
     <Compile Include="PhoneIntegration.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="TileImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Quote.cs" />

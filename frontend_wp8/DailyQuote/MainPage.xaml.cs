@@ -3,6 +3,7 @@ using Microsoft.Phone.Tasks;
 using System;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using Windows.Phone.System.UserProfile;
 
 namespace DailyQuote
@@ -13,6 +14,7 @@ namespace DailyQuote
 		{
 			InitializeComponent();
 			headerDate.Text = DateTime.Now.ToShortDateString();
+			DataContext = this;
 			Loaded += MainPage_Loaded;
 		}
 
@@ -24,6 +26,8 @@ namespace DailyQuote
 			}
 
 			new UpdateBackgroundAgent().StartPeriodicAgent();
+
+			DailyQuoteLogic.Settings.AccentColor = ((SolidColorBrush)App.Current.Resources["PhoneAccentBrush"]).Color;
 
 			try
 			{
@@ -52,8 +56,18 @@ namespace DailyQuote
 			}
 
 			quoteTextBlock.Text = quote.ToString();
-			quoteTextBlock.Background = DailyQuoteLogic.PhoneIntegration.RandomColor();
-			quoteTextBlock.Visibility = System.Windows.Visibility.Visible;
+			quoteTextBlock.Background = DailyQuoteLogic.PhoneIntegration.GetTileColor();
+			QuoteAndSettings.Visibility = System.Windows.Visibility.Visible;
+		}
+		public bool RandomTileColor
+		{
+			get { return DailyQuoteLogic.Settings.RandomizeTileColor; }
+			set { DailyQuoteLogic.Settings.RandomizeTileColor = value; }
+		}
+		public bool RandomLockScreenColor
+		{
+			get { return DailyQuoteLogic.Settings.RandomizeLockScreenColor; }
+			set { DailyQuoteLogic.Settings.RandomizeLockScreenColor = value; }
 		}
 
 		void BrowseToBrainyQuote(object sender, EventArgs e)
