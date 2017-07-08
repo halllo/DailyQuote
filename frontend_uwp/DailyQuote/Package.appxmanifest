@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="e2498081-8cfa-4426-a7ce-cfd237ca3f2f" Publisher="CN=manue" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="e2498081-8cfa-4426-a7ce-cfd237ca3f2f" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="45171halllo.DailyQuote" Publisher="CN=3E6DAAA1-F5D5-4D60-B348-26AC4A60F768" Version="1.1.0.0" />
+  <mp:PhoneIdentity PhoneProductId="a4f1cf08-7794-461d-a61d-626105b2c595" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>DailyQuote</DisplayName>
-    <PublisherDisplayName>manue</PublisherDisplayName>
+    <PublisherDisplayName>mnsdc</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="DailyQuote.App">
-      <uap:VisualElements DisplayName="DailyQuote" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="DailyQuote" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="Daily Quote" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Daily Quote" BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
         </uap:DefaultTile>
         <uap:SplashScreen Image="Assets\SplashScreen.png" BackgroundColor="white" />
