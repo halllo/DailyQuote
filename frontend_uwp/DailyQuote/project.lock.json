@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 2,
   "targets": {
     "UAP,Version=v10.0": {
       "Microsoft.CSharp/4.0.1": {
@@ -2201,6 +2201,20 @@
             "assetType": "runtime",
             "rid": "aot"
           }
+        }
+      },
+      "BackgroundTask/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
+      },
+      "DailyQuote.Core/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
         }
       }
     },
@@ -4488,6 +4502,20 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "BackgroundTask/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
+      },
+      "DailyQuote.Core/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
@@ -5102,6 +5130,9 @@
       },
       "runtime.win10-arm-aot.runtime.native.System.IO.Compression/4.0.1": {
         "type": "package",
+        "compile": {
+          "runtimes/win10-arm-aot/lib/netcore50/_._": {}
+        },
         "runtime": {
           "runtimes/win10-arm-aot/lib/netcore50/clrcompression.dll": {}
         }
@@ -6809,6 +6840,20 @@
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "BackgroundTask/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
+      },
+      "DailyQuote.Core/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
         }
       }
     },
@@ -9105,6 +9150,20 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "BackgroundTask/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
+      },
+      "DailyQuote.Core/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
@@ -9722,6 +9781,9 @@
       },
       "runtime.win10-x64-aot.runtime.native.System.IO.Compression/4.0.1": {
         "type": "package",
+        "compile": {
+          "runtimes/win10-x64-aot/lib/netcore50/_._": {}
+        },
         "runtime": {
           "runtimes/win10-x64-aot/lib/netcore50/clrcompression.dll": {}
         }
@@ -11435,6 +11497,20 @@
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "BackgroundTask/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
+      },
+      "DailyQuote.Core/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
         }
       }
     },
@@ -13731,6 +13807,20 @@
         "runtime": {
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "BackgroundTask/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
+      },
+      "DailyQuote.Core/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
@@ -14348,6 +14438,9 @@
       },
       "runtime.win10-x86-aot.runtime.native.System.IO.Compression/4.0.1": {
         "type": "package",
+        "compile": {
+          "runtimes/win10-x86-aot/lib/netcore50/_._": {}
+        },
         "runtime": {
           "runtimes/win10-x86-aot/lib/netcore50/clrcompression.dll": {}
         }
@@ -16061,6 +16154,20 @@
         },
         "runtime": {
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
+        }
+      },
+      "BackgroundTask/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
+        }
+      },
+      "DailyQuote.Core/1.0.0": {
+        "type": "project",
+        "framework": "Unsupported,Version=v0.0",
+        "dependencies": {
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3"
         }
       }
     }
@@ -24325,6 +24432,16 @@
         "ref/xamarinwatchos10/_._",
         "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
+    },
+    "BackgroundTask/1.0.0": {
+      "type": "project",
+      "path": "../BackgroundTask/BackgroundTask.csproj",
+      "msbuildProject": "../BackgroundTask/BackgroundTask.csproj"
+    },
+    "DailyQuote.Core/1.0.0": {
+      "type": "project",
+      "path": "../DailyQuote.Core/DailyQuote.Core.csproj",
+      "msbuildProject": "../DailyQuote.Core/DailyQuote.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -24342,23 +24459,17 @@
       "projectName": "DailyQuote",
       "projectPath": "D:\\Projects\\DailyQuote\\frontend_uwp\\DailyQuote\\DailyQuote.csproj",
       "projectJsonPath": "D:\\Projects\\DailyQuote\\frontend_uwp\\DailyQuote\\project.json",
-      "packagesPath": "C:\\Users\\manue\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\DailyQuote\\frontend_uwp\\DailyQuote\\obj\\",
       "projectStyle": "ProjectJson",
-      "validateRuntimeAssets": true,
-      "configFilePaths": [
-        "C:\\Users\\manue\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-      ],
-      "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "http://nuget.syncfusion.com/nuget_universalwindows/nuget/getsyncfusionpackages/universalwindows": {},
-        "http://nuget.syncfusion.com/wpf": {},
-        "https://api.nuget.org/v3/index.json": {}
-      },
       "frameworks": {
         "uap10.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Projects\\DailyQuote\\frontend_uwp\\BackgroundTask\\BackgroundTask.csproj": {
+              "projectPath": "D:\\Projects\\DailyQuote\\frontend_uwp\\BackgroundTask\\BackgroundTask.csproj"
+            },
+            "D:\\Projects\\DailyQuote\\frontend_uwp\\DailyQuote.Core\\DailyQuote.Core.csproj": {
+              "projectPath": "D:\\Projects\\DailyQuote\\frontend_uwp\\DailyQuote.Core\\DailyQuote.Core.csproj"
+            }
+          }
         }
       }
     },

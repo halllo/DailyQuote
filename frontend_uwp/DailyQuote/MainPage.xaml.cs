@@ -1,6 +1,8 @@
-﻿using System;
+﻿using DailyQuote.Core;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Background;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -17,6 +19,7 @@ namespace DailyQuote
 
 		private async void MainPage_Loaded(object sender, RoutedEventArgs e)
 		{
+			RegisterBackgroundTask();
 			await GetQuote();
 		}
 
@@ -24,6 +27,30 @@ namespace DailyQuote
 		{
 			await GetQuote();
 		}
+
+		private async void RegisterBackgroundTask()
+		{
+			var backgroundAccessStatus = await BackgroundExecutionManager.RequestAccessAsync();
+			if (backgroundAccessStatus == BackgroundAccessStatus.AlwaysAllowed ||
+				backgroundAccessStatus == BackgroundAccessStatus.AllowedSubjectToSystemPolicy)
+			{
+				foreach (var task in BackgroundTaskRegistration.AllTasks)
+				{
+					if (task.Value.Name == taskName)
+					{
+						task.Value.Unregister(true);
+					}
+				}
+
+				BackgroundTaskBuilder taskBuilder = new BackgroundTaskBuilder();
+				taskBuilder.Name = taskName;
+				taskBuilder.TaskEntryPoint = taskEntryPoint;
+				taskBuilder.SetTrigger(new TimeTrigger(240, false));
+				var registration = taskBuilder.Register();
+			}
+		}
+		private const string taskName = "TileUpdateBackgroundTask";
+		private const string taskEntryPoint = "BackgroundTask.TileUpdateBackgroundTask";
 
 		private async Task GetQuote()
 		{
@@ -43,6 +70,11 @@ namespace DailyQuote
 		public static async Task Message(string text)
 		{
 			await new MessageDialog(text).ShowAsync();
+		}
+
+		private void AppBarButton_LikeClick(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(InfoPage));
 		}
 	}
 }

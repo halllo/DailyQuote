@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace DailyQuote
+namespace DailyQuote.Core
 {
 	public static class Get
 	{
